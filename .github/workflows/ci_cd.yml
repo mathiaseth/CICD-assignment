@@ -68,7 +68,9 @@ jobs:
     # https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions
         - name: Build Docker Image
           run: |
+            echo "DockerHub username: ${{ secrets.DOCKERHUB_USERNAME }}"
             docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/backend_flask:${{ github.sha }} -t ${{ secrets.DOCKERHUB_USERNAME }}/backend_flask:latest .
+    
     # Step 8: # Log in to Docker Hub
         - name: Log in to Docker Hub
           run: echo "${{ secrets.DOCKERHUB_ACCESS_TOKEN }}" | docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
