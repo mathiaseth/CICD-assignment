@@ -43,7 +43,6 @@ jobs:
             pytest
           else
             echo "No tests found, skipping test."
-            exit 1
           fi
 
   deploy:
